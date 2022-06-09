@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+body {
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.table {
+  margin-top: 20px;
+  width: 100%;
+}
+
+
+.table td {
+  border: 1px solid #ccc;
+}
+
+.table th {
+  background-color: #ccc;
+  border: 1px solid #666;
+}
+

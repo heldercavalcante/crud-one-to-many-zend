@@ -1,0 +1,58 @@
+version: "3.7"
+services:
+
+#Laravel App
+  webserver:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: php:7.4.22-apache-store
+    restart: unless-stopped
+    working_dir: /var/www/html/
+    environment:
+      MYSQL_DATABASE: ${PROJECT_NAME}
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_PASSWORD: 12345
+      MYSQL_USER: root
+      MYSQL_HOST: mysql
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www/html/
+    networks:
+      - dev
+
+  #Mysl Service
+  mysql:
+    image: mysql/mysql-server:5.7.35
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: ${PROJECT_NAME}
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_PASSWORD: 12345
+      MYSQL_USER: root
+    volumes:
+      - /var/lib/mysql_${PROJECT_NAME}/:/var/lib/mysql/
+    networks:
+      - dev
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: unless-stopped
+    ports:
+      - 3000:80
+    links:
+      - mysql
+    environment:
+      - PMA_ARBITRARY=1  
+      - PMA_CONTROLHOST=mysql
+      - PMA_CONTROLUSER=root
+      - PMA_CONTROLPASS=12345
+    networks:
+        - dev      
+      
+networks:
+  dev:
+    driver: bridge

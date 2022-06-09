@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../../public/index.css">
+  <title>Document</title>
+</head>
+<body>
+<h1>Show Products</h1>
+<?php if ($this->product): ?>
+  <table class="table">
+    <thead>
+    <tr>
+    <th>ID</th>
+    <th>Image</th>
+    <th>name</th>
+    <th>Category</th>
+    <th>Price</th>
+    <th>Description</th>
+    <th>Post Date</th>
+    <th>Updated Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><?php echo $this->product->pro_id ?></td>
+        <td><img src="<?php echo BASE_URL.UPLOAD_DIR.'/'.$this->product->pro_image?>"></td>
+        <td><?php echo $this->product->pro_name ?></td>
+        <td><?php echo $this->product->pro_cat_id ?></td>
+        <td><?php echo $this->product->pro_price ?></td>
+        <td><?php echo $this->product->pro_description ?></td>
+        <td><?php echo $this->product->pro_created_at ?></td>
+        <td><?php echo $this->product->pro_updated_at ?></td>
+    </tr>
+    </tbody>
+  </table>
+  <?php else: ?>
+    <?php echo $this->message ?>
+<?php endif ?> 
+</body>
+</html>

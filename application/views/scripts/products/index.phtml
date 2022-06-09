@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../public/index.css">
+    <title>Document</title>
+</head>
+<body>
+<h1>Products</h1>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Created</th>
+        <th>Action</th>
+    </tr>
+    <?php foreach ($this->products as $key => $product): ?>
+    <tr>
+        <td>
+          <?php echo $product->pro_id?>
+        </td>
+        <td>
+        <img src="<?php echo BASE_URL.UPLOAD_DIR.'/'.$product->pro_image?>">
+        </td>
+        <td>
+            <a href="<?php echo $this->baseUrl('/products/show/id/' . $product->pro_id) ?>">
+                <?php echo $product->pro_name ?>
+            </a>
+        </td>
+        <td>
+            <?php echo $product->cat_name?>
+        </td>
+        <td>
+            <?php echo $product->pro_created_at ?>
+        </td>
+        <td>
+            <a href="<?php echo $this->baseUrl('/products/edit/id/' . $product->pro_id) ?>">Edit</a>
+            <a href="<?php echo $this->baseUrl('/products/del/id/' . $product->pro_id) ?>">Delete</a>
+        </td>
+    </tr>
+    <?php endforeach ?>
+</table>
+</body>
+</html>

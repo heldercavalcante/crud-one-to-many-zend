@@ -1,0 +1,24 @@
+<h1>Posts</h1>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Created</th>
+        <th></th>
+    </tr>
+    <?php foreach ($this->posts as $key => $post): ?>
+    <tr>
+        <td>
+            <a href="<?php echo $this->baseUrl('/posts/show/id/' . $post->id) ?>">
+                <?php echo $post->title ?>
+            </a>
+        </td>
+        <td>
+            <?php echo $post->created ?>
+        </td>
+        <td>
+            <a href="<?php echo $this->baseUrl('/posts/edit/id/' . $post->id) ?>">Edit</a>
+            <a href="<?php echo $this->baseUrl('/posts/del/id/' . $post->id) ?>">Delete</a>
+        </td>
+    </tr>
+    <?php endforeach ?>
+</table>

@@ -1,0 +1,19 @@
+<h1>Show Post</h1>
+<?php if ($this->post): ?>
+    <table>
+        <tr>
+            <th>ID</th>
+            <td><?php echo $this->post->id ?></td>
+            <th>Title</th>
+            <td><?php echo $this->post->title ?></td>
+            <th>Body</th>
+            <td><?php echo $this->post->body ?></td>
+            <th>Post Date</th>
+            <td><?php echo $this->post->created ?></td>
+            <th>Updated Date</th>
+            <td><?php echo $this->post->updated ?></td>
+        </tr>
+    </table>
+<?php else: ?>
+    <?php echo $this->message ?>
+<?php endif ?>
